@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>howdytherebear</title>
-  
+
   <!-- Favicon (desktop browsers) -->
   <link rel="icon" type="image/png" href="favicon.png">
 
@@ -38,36 +38,45 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
 
-    /* Fill the page, allow normal scrolling if needed (for desktop) */
+    /* Fill the page */
     html, body {
       width: 100%;
       height: 100%;
+      margin: 0;
+      padding: 0;
     }
 
     body {
       background: linear-gradient(to bottom, #d2eafc 0%, #f7faff 100%);
+      /* We'll let the container size itself. */
       display: flex;
       justify-content: center;
       align-items: center;
-      /* On desktop, the container is just centered at a normal size */
     }
 
-    /* CONTAINER: normal desktop style */
+    /*
+      MOBILE-FIRST (Base):
+      Make everything BIG, nearly fill the screen,
+      and allow internal scrolling if needed.
+    */
     .linktree-container {
-      width: 90%;
-      max-width: 500px;
+      width: 95vw;           /* 95% of viewport width */
+      height: 95vh;          /* 95% of viewport height */
       background-color: #ffffff;
       border-radius: 16px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.08);
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       padding: 40px 20px 30px;
-      margin: 20px 0;
+      overflow-y: auto;      /* scroll inside if content is taller than 95vh */
     }
 
-    /* PROFILE IMAGE */
+    /* PROFILE IMAGE - big for mobile */
     .profile-pic {
-      width: 120px;
-      height: 120px;
+      width: 180px;
+      height: 180px;
       border-radius: 50%;
       object-fit: cover;
       margin: 0 auto 16px;
@@ -75,17 +84,17 @@
       border: 2px solid #ddd;
     }
 
-    /* HANDLE / NAME */
+    /* HANDLE / NAME - large text */
     .username {
-      font-size: 1.25rem;
+      font-size: 2rem;       /* bigger text */
       font-weight: 600;
       color: #333;
-      margin-bottom: 8px;
+      margin-bottom: 16px;
     }
 
-    /* BIO / DESCRIPTION */
+    /* BIO / DESCRIPTION - bigger text */
     .description {
-      font-size: 0.95rem;
+      font-size: 1.3rem;
       color: #555;
       line-height: 1.4;
       margin-bottom: 24px;
@@ -106,8 +115,9 @@
       text-decoration: none;
       color: #333;
       background-color: #f0f0f0;
-      padding: 14px 16px;
+      padding: 16px 24px;
       border-radius: 8px;
+      font-size: 1.2rem;      /* bigger text */
       font-weight: 500;
       transition: background-color 0.2s ease;
     }
@@ -118,58 +128,33 @@
 
     /* Icon: Circular cutout */
     .button-icon {
-      width: 24px;
-      height: 24px;
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
       object-fit: cover;
     }
 
     /* Placeholder to balance the grid (same width as the icon) */
     .btn-placeholder {
-      width: 24px;
+      width: 28px;
     }
 
     /*
-      MEDIA QUERY for small screens (approx. phone size):
-      1) Expand the container to fill 95% of screen width/height
-      2) Scale up fonts/images
-      3) Allow scrolling within the container if content doesn't fit
+      DESKTOP MEDIA QUERY:
+      - We shrink the container so there's more margin around it
+        (so it doesn't fill the entire screen).
+      - Keep fonts large, but you can reduce them if you want.
     */
-    @media (max-width: 480px) {
-      /* Take over full screen, removing any extra margins on <body> */
-      html, body {
-        margin: 0;
-        padding: 0;
-      }
+    @media (min-width: 768px) {
       body {
-        /* We won't center in the body; the container itself will fill the screen. */
+        /* Center the container with extra space around it. */
+        display: block;  /* revert to normal flow */
       }
-
       .linktree-container {
-        width: 95vw;
-        height: 95vh;
-        margin: 0;             /* no margin, so it nearly fills the screen */
-        border-radius: 16px;   /* keep slight rounding */
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        overflow-y: auto;      /* scroll if needed */
-        padding: 40px 20px 30px; /* can adjust if you want more/less padding */
-      }
-
-      .profile-pic {
-        width: 180px;
-        height: 180px;
-      }
-      .username {
-        font-size: 1.8rem;
-      }
-      .description {
-        font-size: 1.2rem;
-      }
-      .link-btn {
-        font-size: 1.1rem;
-        padding: 16px 20px;
+        width: 60vw;     /* 60% of viewport width on desktop */
+        height: 80vh;    /* 80% of viewport height */
+        margin: 5vh auto;/* center with top/bottom margin */
+        overflow-y: auto;
       }
     }
   </style>
@@ -187,7 +172,7 @@
     <!-- Username -->
     <div class="username">@howdytherebear</div>
 
-    <!-- Description / Bio (3 lines) -->
+    <!-- Description / Bio -->
     <div class="description">
       Howdy, I’m Bear! 🐶🤠<br>
       A Golden Retriever from ATX 🏆<br>
