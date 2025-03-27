@@ -44,52 +44,59 @@
       background: linear-gradient(to bottom, #d2eafc 0%, #f7faff 100%);
     }
 
-    /* CONTAINER: pinned near top, wide, with large content by default */
+    /* 
+      MOBILE-FIRST:
+      Container fills 90% of screen (both width & height),
+      spaced vertically so everything is big & centered.
+    */
     .linktree-container {
-      width: 95%;
-      max-width: 600px;      /* so it's not insane on large desktops */
-      margin: 20px auto 0;   /* near top, center horizontally */
+      width: 90vw;
+      height: 90vh;
+      margin: 5vh auto; /* centers vertically & horizontally, leaving 5vh top/bottom */
       background-color: #fff;
       border-radius: 16px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+      
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around; /* spread out items vertically */
       text-align: center;
-      padding: 20px;
     }
 
-    /* GIANT PROFILE PIC ON MOBILE */
+    /* BIG profile pic using viewport width */
     .profile-pic {
-      width: 60vw;            /* 60% of viewport width (large circle) */
-      height: 60vw;
+      width: 40vw;
+      height: 40vw;
       border-radius: 50%;
       object-fit: cover;
-      margin-bottom: 16px;
       border: 2px solid #ddd;
     }
 
-    /* BIG USERNAME */
+    /* Big text using vw so it scales with screen width */
     .username {
-      font-size: 2.5rem;      /* very large text */
+      font-size: 7vw; 
       font-weight: 700;
       color: #333;
-      margin-bottom: 16px;
     }
 
-    /* BIG DESCRIPTION */
+    /* Description, also big but slightly smaller than username */
     .description {
-      font-size: 1.6rem;
+      font-size: 5vw;
       color: #555;
-      line-height: 1.4;
-      margin-bottom: 24px;
+      line-height: 1.2;
     }
 
-    /* LINKS AREA */
+    /* Links area: vertical stack */
     .links {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 4vw; /* space between buttons also in vw */
+      width: 100%; /* let the buttons be centered within container’s width */
+      align-items: center;
     }
 
-    /* LARGE BUTTONS */
+    /* Buttons: big text, big padding, width 80% of container */
     .link-btn {
       display: grid;
       grid-template-columns: auto 1fr auto;
@@ -98,9 +105,10 @@
       text-decoration: none;
       color: #333;
       background-color: #f0f0f0;
-      padding: 16px 24px;
+      width: 80%;
+      padding: 3vw;
       border-radius: 8px;
-      font-size: 1.6rem;       /* large text for readability */
+      font-size: 5vw; 
       font-weight: 500;
       transition: background-color 0.2s ease;
     }
@@ -108,39 +116,47 @@
       background-color: #e2e2e2;
     }
 
-    /* LARGE ICONS */
+    /* Icons also big, sized with vw */
     .button-icon {
-      width: 40px;
-      height: 40px;
+      width: 8vw;
+      height: 8vw;
       border-radius: 50%;
       object-fit: cover;
     }
     .btn-placeholder {
-      width: 40px;
+      width: 8vw;
     }
 
     /*
-      DESKTOP MEDIA QUERY: shrink things a bit
-      so it's not *too* big on large screens.
+      DESKTOP MEDIA QUERY:
+      At 768px+, reduce the scale so it’s not *too* huge.
+      Use smaller % for container height, smaller font sizes, etc.
     */
     @media (min-width: 768px) {
+      .linktree-container {
+        width: 60vw;
+        height: 70vh;
+      }
       .profile-pic {
-        width: 300px;    /* reduce from 60vw */
-        height: 300px;
+        width: 15vw;
+        height: 15vw;
       }
       .username {
-        font-size: 2rem;
+        font-size: 3vw;
       }
       .description {
-        font-size: 1.3rem;
+        font-size: 2vw;
+      }
+      .links {
+        gap: 2vw;
       }
       .link-btn {
-        font-size: 1.3rem;
-        padding: 14px 20px;
+        font-size: 2vw;
+        padding: 1.5vw;
       }
       .button-icon, .btn-placeholder {
-        width: 32px;
-        height: 32px;
+        width: 4vw;
+        height: 4vw;
       }
     }
   </style>
@@ -158,7 +174,7 @@
     <!-- Username -->
     <div class="username">@howdytherebear</div>
 
-    <!-- Description / Bio -->
+    <!-- Description -->
     <div class="description">
       Howdy, I’m Bear! 🐶🤠<br>
       A Golden Retriever from ATX 🏆<br>
