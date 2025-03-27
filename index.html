@@ -38,20 +38,23 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
 
+    /* Make body fill the screen and remove scrolling */
+    html, body {
+      width: 100%;
+      height: 100%;
+    }
     body {
-      min-height: 100vh;
       background: linear-gradient(to bottom, #d2eafc 0%, #f7faff 100%);
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 20px;
+      overflow: hidden; /* no scroll */
     }
 
-    /* CONTAINER */
+    /* CONTAINER: center, bigger on mobile, up to 400px wide */
     .linktree-container {
-      position: relative;
-      width: 400px;
-      max-width: 90%;
+      width: 90%;
+      max-width: 400px;
       background-color: #ffffff;
       border-radius: 16px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.08);
@@ -158,12 +161,4 @@
         <span class="btn-placeholder"></span>
       </a>
       <a href="https://www.tiktok.com/@howdytherebear?_t=zt-8urupxlvoyc&_r=1" class="link-btn">
-        <img src="icon-tiktok.png" alt="TikTok Icon" class="button-icon">
-        <span>My TikTok</span>
-        <span class="btn-placeholder"></span>
-      </a>
-    </div>
-  </div>
-
-</body>
-</html>
+        <img src="icon-tiktok.png" alt="TikTok Icon
