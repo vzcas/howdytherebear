@@ -38,7 +38,7 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
 
-    /* Fill the page, allow scrolling if needed */
+    /* Fill the page, allow normal scrolling if needed (for desktop) */
     html, body {
       width: 100%;
       height: 100%;
@@ -49,19 +49,19 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      /* On desktop, we just center the container normally */
+      /* On desktop, the container is just centered at a normal size */
     }
 
-    /* The container for your content */
+    /* CONTAINER: normal desktop style */
     .linktree-container {
       width: 90%;
-      max-width: 500px; 
+      max-width: 500px;
       background-color: #ffffff;
       border-radius: 16px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.08);
       text-align: center;
       padding: 40px 20px 30px;
-      margin: 20px 0; /* some spacing on desktop */
+      margin: 20px 0;
     }
 
     /* PROFILE IMAGE */
@@ -129,49 +129,46 @@
       width: 24px;
     }
 
-    /* 
-      MEDIA QUERY for smaller screens:
-      1) Make the container fill ~90% of the viewport height
-      2) Center content inside the container
-      3) Increase image and text sizes
+    /*
+      MEDIA QUERY for small screens (approx. phone size):
+      1) Expand the container to fill 95% of screen width/height
+      2) Scale up fonts/images
+      3) Allow scrolling within the container if content doesn't fit
     */
     @media (max-width: 480px) {
+      /* Take over full screen, removing any extra margins on <body> */
       html, body {
-        margin: 0; 
+        margin: 0;
         padding: 0;
       }
-
       body {
-        /* We center the container, but it will fill the screen vertically */
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        /* We won't center in the body; the container itself will fill the screen. */
       }
 
       .linktree-container {
-        margin: 0;          /* remove extra margin so it can fill screen */
-        width: 90%;         /* slightly bigger width on small screens */
-        height: 90vh;       /* fill 90% of screen height */
+        width: 95vw;
+        height: 95vh;
+        margin: 0;             /* no margin, so it nearly fills the screen */
+        border-radius: 16px;   /* keep slight rounding */
         display: flex;
         flex-direction: column;
         justify-content: center;
-        padding: 30px 20px;
-        overflow-y: auto;   /* if content is taller than 90vh, scroll inside container */
+        overflow-y: auto;      /* scroll if needed */
+        padding: 40px 20px 30px; /* can adjust if you want more/less padding */
       }
 
-      /* Bump up sizes */
       .profile-pic {
-        width: 150px;
-        height: 150px;
+        width: 180px;
+        height: 180px;
       }
       .username {
-        font-size: 1.4rem;
+        font-size: 1.8rem;
       }
       .description {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
       }
       .link-btn {
-        font-size: 1.05rem;
+        font-size: 1.1rem;
         padding: 16px 20px;
       }
     }
