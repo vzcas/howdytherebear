@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bear's Link Tree</title>
+  <style>
+    /* GLOBAL STYLES */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(to bottom, #d2eafc 0%, #f7faff 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    /* CONTAINER */
+    .linktree-container {
+      position: relative;
+      width: 400px;
+      max-width: 90%;
+      background-color: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+      text-align: center;
+      padding: 40px 20px 30px;
+    }
+
+    /* TOP MENU (three dots) */
+    .menu-button {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 24px;
+      height: 24px;
+      border: none;
+      background-color: #f0f0f0;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .menu-button:before {
+      content: "...";
+      font-size: 14px;
+      line-height: 14px;
+      color: #333;
+    }
+
+    /* PROFILE IMAGE */
+    .profile-pic {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 16px;
+      display: block;
+      border: 2px solid #ddd;
+    }
+
+    /* HANDLE / NAME */
+    .username {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 8px;
+    }
+
+    /* BIO / DESCRIPTION (3 lines) */
+    .description {
+      font-size: 0.95rem;
+      color: #555;
+      line-height: 1.4;
+      margin-bottom: 24px;
+    }
+
+    /* LINK BUTTONS */
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .link-btn {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      text-align: center;
+      text-decoration: none;
+      color: #333;
+      background-color: #f0f0f0;
+      padding: 14px 16px;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: background-color 0.2s ease;
+    }
+
+    .link-btn:hover {
+      background-color: #e2e2e2;
+    }
+
+    /* Icon: Circular cutout */
+    .button-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    /* The text will automatically center in the middle column */
+    .btn-text {
+      /* No extra styling needed for centering */
+    }
+
+    /* A placeholder to balance the grid (same width as the icon) */
+    .btn-placeholder {
+      width: 24px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="linktree-container">
+    <button class="menu-button"></button>
+    
+    <!-- Profile Image -->
+    <img
+      src="profile.jpg"
+      alt="Golden Retriever Profile"
+      class="profile-pic"
+    />
+
+    <!-- Username -->
+    <div class="username">@howdytherebear</div>
+
+    <!-- Description / Bio (3 lines) -->
+    <div class="description">
+      Howdy, I’m Bear! 🐶🤠<br>
+      A Golden Retriever from ATX 🏆<br>
+      Ran by @victor.cassizzi
+    </div>
+
+    <!-- Links with Icons -->
+    <div class="links">
+      <a href="https://your-collar-link.com" class="link-btn">
+        <img src="icon-collar.png" alt="Collar Icon" class="button-icon">
+        <span class="btn-text">Fi Smart Dog Collar</span>
+        <span class="btn-placeholder"></span>
+      </a>
+      <a href="https://www.instagram.com/yourprofile" class="link-btn">
+        <img src="icon-instagram.png" alt="Instagram Icon" class="button-icon">
+        <span class="btn-text">My Instagram</span>
+        <span class="btn-placeholder"></span>
+      </a>
+      <a href="https://www.tiktok.com/@yourprofile" class="link-btn">
+        <img src="icon-tiktok.png" alt="TikTok Icon" class="button-icon">
+        <span class="btn-text">My TikTok</span>
+        <span class="btn-placeholder"></span>
+      </a>
+    </div>
+  </div>
+
+</body>
+</html>
