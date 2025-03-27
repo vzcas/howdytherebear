@@ -4,26 +4,25 @@
   <meta charset="UTF-8" />
   <title>howdytherebear</title>
 
-  <!-- Favicon (desktop browsers) -->
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png">
-
-  <!-- Apple Touch Icon (iOS) -->
+  <!-- Apple Touch Icon -->
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
 
-  <!-- Preload images for faster loading -->
+  <!-- Preload images -->
   <link rel="preload" href="profile.png" as="image">
   <link rel="preload" href="icon-collar.png" as="image">
   <link rel="preload" href="icon-instagram.png" as="image">
   <link rel="preload" href="icon-tiktok.png" as="image">
   
-  <!-- Open Graph / Facebook Meta Tags -->
+  <!-- Open Graph -->
   <meta property="og:title" content="howdytherebear" />
   <meta property="og:description" content="Howdy, I’m Bear! 🐶🤠 A Golden Retriever from ATX 🏆. Ran by @victor.cassizzi" />
   <meta property="og:image" content="https://vzcas.github.io/howdytherebear/profile.png" />
   <meta property="og:url" content="https://vzcas.github.io/howdytherebear/" />
   <meta property="og:type" content="website" />
 
-  <!-- Twitter Meta Tags -->
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="howdytherebear" />
   <meta name="twitter:description" content="Howdy, I’m Bear! 🐶🤠 A Golden Retriever from ATX 🏆. Ran by @victor.cassizzi" />
@@ -37,77 +36,60 @@
       box-sizing: border-box;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
-
     html, body {
       width: 100%;
       height: 100%;
-    }
-
-    /* Minimal top/bottom margin on body so container sits near the top */
-    body {
       margin: 0;
-      padding: 20px 0; /* 20px space top & bottom */
+      padding: 0;
       background: linear-gradient(to bottom, #d2eafc 0%, #f7faff 100%);
-      /* No flex here — we want the container to align at the top, not center */
     }
 
-    /* BIG, FILL-SCREEN STYLE */
+    /* CONTAINER: pinned near top, wide, with large content by default */
     .linktree-container {
-      /* Nearly full width, small gap on sides */
-      width: 98vw;           
-      /* If you never want a max width on desktop, remove the line below */
-      max-width: 1200px;     
-      
-      /* Minimal top/bottom margin, so it’s near the top */
-      margin: 0 auto;
-      
-      /* Looks like a card, but big! */
-      background-color: #ffffff;
+      width: 95%;
+      max-width: 600px;      /* so it's not insane on large desktops */
+      margin: 20px auto 0;   /* near top, center horizontally */
+      background-color: #fff;
       border-radius: 16px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-      
-      /* Padding inside the container */
-      padding: 30px 20px;
-      
-      /* Text centered inside */
       text-align: center;
+      padding: 20px;
     }
 
-    /* PROFILE IMAGE - bigger */
+    /* GIANT PROFILE PIC ON MOBILE */
     .profile-pic {
-      width: 150px;
-      height: 150px;
+      width: 60vw;            /* 60% of viewport width (large circle) */
+      height: 60vw;
       border-radius: 50%;
       object-fit: cover;
-      margin: 0 auto 16px;
-      display: block;
+      margin-bottom: 16px;
       border: 2px solid #ddd;
     }
 
-    /* HANDLE / NAME - bigger text */
+    /* BIG USERNAME */
     .username {
-      font-size: 1.8rem;
-      font-weight: 600;
+      font-size: 2.5rem;      /* very large text */
+      font-weight: 700;
       color: #333;
       margin-bottom: 16px;
     }
 
-    /* BIO / DESCRIPTION - also bigger */
+    /* BIG DESCRIPTION */
     .description {
-      font-size: 1.2rem;
+      font-size: 1.6rem;
       color: #555;
       line-height: 1.4;
       margin-bottom: 24px;
     }
 
-    /* LINKS WRAPPER */
+    /* LINKS AREA */
     .links {
       display: flex;
       flex-direction: column;
-      gap: 16px; /* extra space between buttons */
+      gap: 16px;
     }
 
-    /* LINK BUTTONS - bigger text, more padding */
+    /* LARGE BUTTONS */
     .link-btn {
       display: grid;
       grid-template-columns: auto 1fr auto;
@@ -118,26 +100,48 @@
       background-color: #f0f0f0;
       padding: 16px 24px;
       border-radius: 8px;
-      font-size: 1.3rem; /* bigger text */
+      font-size: 1.6rem;       /* large text for readability */
       font-weight: 500;
       transition: background-color 0.2s ease;
     }
-
     .link-btn:hover {
       background-color: #e2e2e2;
     }
 
-    /* Icon: Circular cutout */
+    /* LARGE ICONS */
     .button-icon {
-      width: 28px;
-      height: 28px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       object-fit: cover;
     }
-
-    /* Placeholder to balance the grid (same width as the icon) */
     .btn-placeholder {
-      width: 28px;
+      width: 40px;
+    }
+
+    /*
+      DESKTOP MEDIA QUERY: shrink things a bit
+      so it's not *too* big on large screens.
+    */
+    @media (min-width: 768px) {
+      .profile-pic {
+        width: 300px;    /* reduce from 60vw */
+        height: 300px;
+      }
+      .username {
+        font-size: 2rem;
+      }
+      .description {
+        font-size: 1.3rem;
+      }
+      .link-btn {
+        font-size: 1.3rem;
+        padding: 14px 20px;
+      }
+      .button-icon, .btn-placeholder {
+        width: 32px;
+        height: 32px;
+      }
     }
   </style>
 </head>
@@ -154,14 +158,14 @@
     <!-- Username -->
     <div class="username">@howdytherebear</div>
 
-    <!-- Description / Bio (3 lines) -->
+    <!-- Description / Bio -->
     <div class="description">
       Howdy, I’m Bear! 🐶🤠<br>
       A Golden Retriever from ATX 🏆<br>
       Ran by @victor.cassizzi
     </div>
 
-    <!-- Links with Icons -->
+    <!-- Links -->
     <div class="links">
       <a href="http://barkinglabscorp.sjv.io/4GomYr" class="link-btn">
         <img src="icon-collar.png" alt="Collar Icon" class="button-icon">
