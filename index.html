@@ -38,7 +38,7 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
 
-    /* Make html/body fill the screen, allow scrolling if needed */
+    /* Fill the page, allow scrolling if needed */
     html, body {
       width: 100%;
       height: 100%;
@@ -47,22 +47,21 @@
     body {
       background: linear-gradient(to bottom, #d2eafc 0%, #f7faff 100%);
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
-      /* No overflow hidden here, so content won't get cut off */
+      /* On desktop, we just center the container normally */
     }
 
-    /* CONTAINER: center, up to 400px wide */
+    /* The container for your content */
     .linktree-container {
       width: 90%;
-      max-width: 400px;
+      max-width: 500px; 
       background-color: #ffffff;
       border-radius: 16px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.08);
       text-align: center;
       padding: 40px 20px 30px;
-      margin: 20px 0; /* small top/bottom margin */
+      margin: 20px 0; /* some spacing on desktop */
     }
 
     /* PROFILE IMAGE */
@@ -84,7 +83,7 @@
       margin-bottom: 8px;
     }
 
-    /* BIO / DESCRIPTION (3 lines) */
+    /* BIO / DESCRIPTION */
     .description {
       font-size: 0.95rem;
       color: #555;
@@ -125,9 +124,56 @@
       object-fit: cover;
     }
 
-    /* A placeholder to balance the grid (same width as the icon) */
+    /* Placeholder to balance the grid (same width as the icon) */
     .btn-placeholder {
       width: 24px;
+    }
+
+    /* 
+      MEDIA QUERY for smaller screens:
+      1) Make the container fill ~90% of the viewport height
+      2) Center content inside the container
+      3) Increase image and text sizes
+    */
+    @media (max-width: 480px) {
+      html, body {
+        margin: 0; 
+        padding: 0;
+      }
+
+      body {
+        /* We center the container, but it will fill the screen vertically */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .linktree-container {
+        margin: 0;          /* remove extra margin so it can fill screen */
+        width: 90%;         /* slightly bigger width on small screens */
+        height: 90vh;       /* fill 90% of screen height */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 30px 20px;
+        overflow-y: auto;   /* if content is taller than 90vh, scroll inside container */
+      }
+
+      /* Bump up sizes */
+      .profile-pic {
+        width: 150px;
+        height: 150px;
+      }
+      .username {
+        font-size: 1.4rem;
+      }
+      .description {
+        font-size: 1.1rem;
+      }
+      .link-btn {
+        font-size: 1.05rem;
+        padding: 16px 20px;
+      }
     }
   </style>
 </head>
