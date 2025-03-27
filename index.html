@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <title>howdytherebear</title>
 
+  <!-- Ensure mobile browsers use actual device width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png">
   <!-- Apple Touch Icon -->
@@ -45,58 +48,57 @@
     }
 
     /* 
-      MOBILE-FIRST:
-      Container fills 90% of screen (both width & height),
-      spaced vertically so everything is big & centered.
+      MASSIVE LAYOUT USING VIEWPORT UNITS
+      - Container: 90vw wide, 90vh tall, so it nearly fills the screen.
+      - Minimal top margin (2vh) to keep it near the top.
     */
     .linktree-container {
       width: 90vw;
       height: 90vh;
-      margin: 5vh auto; /* centers vertically & horizontally, leaving 5vh top/bottom */
+      margin: 2vh auto 0; 
       background-color: #fff;
       border-radius: 16px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-      
+
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: space-around; /* spread out items vertically */
+      justify-content: space-evenly; /* space out items vertically */
       text-align: center;
+      overflow: hidden; /* if content grows bigger, it may get cut off */
     }
 
-    /* BIG profile pic using viewport width */
+    /* GIANT PROFILE PIC ~70% of viewport width */
     .profile-pic {
-      width: 40vw;
-      height: 40vw;
+      width: 70vw;
+      height: 70vw;
       border-radius: 50%;
       object-fit: cover;
       border: 2px solid #ddd;
     }
 
-    /* Big text using vw so it scales with screen width */
+    /* GIANT TEXT (8vw for the name, 5vw for description) */
     .username {
-      font-size: 7vw; 
+      font-size: 8vw;
       font-weight: 700;
       color: #333;
     }
-
-    /* Description, also big but slightly smaller than username */
     .description {
       font-size: 5vw;
       color: #555;
       line-height: 1.2;
     }
 
-    /* Links area: vertical stack */
+    /* LINKS: big vertical spacing, fill 100% width inside container */
     .links {
       display: flex;
       flex-direction: column;
-      gap: 4vw; /* space between buttons also in vw */
-      width: 100%; /* let the buttons be centered within container’s width */
+      gap: 5vw;
+      width: 100%;
       align-items: center;
     }
 
-    /* Buttons: big text, big padding, width 80% of container */
+    /* BUTTONS: big text, big icons, ~80% container width */
     .link-btn {
       display: grid;
       grid-template-columns: auto 1fr auto;
@@ -108,7 +110,7 @@
       width: 80%;
       padding: 3vw;
       border-radius: 8px;
-      font-size: 5vw; 
+      font-size: 5vw;
       font-weight: 500;
       transition: background-color 0.2s ease;
     }
@@ -116,48 +118,15 @@
       background-color: #e2e2e2;
     }
 
-    /* Icons also big, sized with vw */
+    /* ICONS ~10vw wide/tall */
     .button-icon {
-      width: 8vw;
-      height: 8vw;
+      width: 10vw;
+      height: 10vw;
       border-radius: 50%;
       object-fit: cover;
     }
     .btn-placeholder {
-      width: 8vw;
-    }
-
-    /*
-      DESKTOP MEDIA QUERY:
-      At 768px+, reduce the scale so it’s not *too* huge.
-      Use smaller % for container height, smaller font sizes, etc.
-    */
-    @media (min-width: 768px) {
-      .linktree-container {
-        width: 60vw;
-        height: 70vh;
-      }
-      .profile-pic {
-        width: 15vw;
-        height: 15vw;
-      }
-      .username {
-        font-size: 3vw;
-      }
-      .description {
-        font-size: 2vw;
-      }
-      .links {
-        gap: 2vw;
-      }
-      .link-btn {
-        font-size: 2vw;
-        padding: 1.5vw;
-      }
-      .button-icon, .btn-placeholder {
-        width: 4vw;
-        height: 4vw;
-      }
+      width: 10vw;
     }
   </style>
 </head>
@@ -165,11 +134,7 @@
 
   <div class="linktree-container">
     <!-- Profile Image -->
-    <img
-      src="profile.png"
-      alt="Golden Retriever Profile"
-      class="profile-pic"
-    />
+    <img src="profile.png" alt="Golden Retriever Profile" class="profile-pic" />
 
     <!-- Username -->
     <div class="username">@howdytherebear</div>
